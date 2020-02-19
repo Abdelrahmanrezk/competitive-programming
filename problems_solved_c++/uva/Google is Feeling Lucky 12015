@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int n,arr[13],c=0,maxs=0;
+
+    string r[1000];
+    scanf("%d",&n);
+    int s = n;
+    while(n--){
+        for(int i=0;i<10;++i) {
+            getline(cin,r[i],' ');
+            scanf("%d",arr+i);
+        }
+
+
+        maxs = arr[0];
+       for(int i=1;i<10;++i)
+       {
+        if(arr[i] > maxs) maxs = arr[i];
+       }
+       cout << "Case #" << ++c << ":";
+       for(int i=0;i<10;++i)
+       {
+        if(arr[i] == maxs) cout << r[i];
+       }
+
+
+    cout << endl;
+    }
+    return 0;
+}

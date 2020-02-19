@@ -1,0 +1,100 @@
+/*
+    Abdelrahman Rezk 
+    Web Developer and problem solveing contestent using c++ 
+   Learner of Algoritms and Data sturucre 
+   Traveling sales man problem is problem of you have some of cities to visit and then need to return you home 
+   you know distance of each city to another and you need to know what is minimum distance you have to take 
+   and the path you will take.
+   sturcure and some notes
+
+   mem array for memoization
+   using bitmask operation to turn on bit as visited city and turn off as not visited
+   initially we make solve(st, (1<<st))
+   1<<st going to the start city you will begin from and turn on this bit and any other bit will be turned of
+   lets say 1<<0 this return with 000....1 and first bit as 1
+   think of 1<<0 to be 1 * 2^0 so 1<<2 will be 1 * 2^2 which is 4
+    and 4 as binary representation is sum zeros and then 100
+    so 100 = 2^0 + 2^1 + 2^2 from right to left.
+
+ */
+
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+const double EPS = 1e-7;
+const int N = 21, M = (1<<N), OO = 0x3f3f3f3f;
+ 
+int n, st;
+int mat[N][N];
+int mem[N][M];
+ 
+void floyd(){
+    for(int k = 0 ; k < n ; ++k)
+        for(int i = 0 ; i < n ; ++i)
+            for(int j = 0 ; j < n ; ++j)
+                mat[i][j] = min(mat[i][j], mat[i][k] + mat[k][j]);
+}
+ 
+int solve(int cur, int msk){
+    if(msk == (1<<n)-1) return mat[cur][st];
+    int& ret = mem[cur][msk]; // take a reference of mem array
+    /*
+        we have initialize mem array with -1 in main and above line take a reference
+
+     */
+    if(~ret)    return ret; 
+    ret = OO;
+    for(int nxt = 0 ; nxt < n ; ++nxt){
+          /*
+            City Number "nxt" is Visited 
+            msk >> next you will divide msk by 2^nxt then & with 1 ensure you if you visit this city or not          */
+        if((msk>>nxt)&1)    continue;     
+        /*
+            msk | (1<<nxt)
+            this will turn on the bit (1<<nxt)  and | with msk return with last image of msk
+            lets say msk is 001001 and (1<<nxt) is 000100
+            so 
+            001001
+                    |
+            000100
+            ======
+            001001 so  now two visited cities
+         */
+        ret = min(ret, mat[cur][nxt] + solve(nxt, msk|(1<<nxt)));
+    }
+    return ret;
+}
+
+
+void print(int cur, int msk){
+    if(msk == (1<<n)-1){
+        printf("%c--", 'A'+cur);
+        return;
+    }
+    for(int nxt = 0 ; nxt < n ; ++nxt){
+        if((msk>>nxt)&1)    continue;       //City Number "nxt" is Visited
+        if(solve(cur, msk) == mat[cur][nxt] + solve(nxt, msk|(1<<nxt))){
+            printf("%c--", 'A'+cur);
+            print(nxt, msk|(1<<nxt));
+            return;
+        }
+
+    }
+}
+int main(){
+    scanf("%d %d", &n, &st);
+    for(int i = 0 ; i < n ; ++i)
+        for(int j = 0 ; j < n ; ++j)
+            scanf("%d", mat[i]+j);
+    memset(mem, -1, sizeof mem); // for any number you will not take as input
+    /*  if there is a multiple path between cities
+        you can run floyd warshal algorithm to minimize the cost between cities
+        floyd(); 
+     */
+    
+    printf("%d\n", solve(st, (1<<st))); // mark the city you start from as visited using bitmask operation 1<<st
+    print(st, (1<<st));
+    printf("%c", 'A'+st); 
+    return 0;
+}

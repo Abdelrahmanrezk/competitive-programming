@@ -1,0 +1,20 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+
+        int t,n,arr[25],subs =0;
+        scanf("%d",&t);
+        while(t--)
+        {
+            scanf("%d",&n);
+            for(int i=0;i<n;++i) scanf("%d",arr+i);
+            sort(arr,arr+n);
+            subs = arr[n-1] - arr[0];
+            printf("%d\n",(subs * 2));
+
+        }
+    return 0;
+}

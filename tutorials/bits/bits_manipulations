@@ -1,0 +1,90 @@
+#include <iostream>
+/*
+some of manipulations on bits of any number you can check it
+*/
+int number, indx;
+using namespace std;
+/*
+count on bits in any integer number like 26 will give you 3 bits depends on its binary representation
+    26 = 1 1 0 1 0 so on bits are 3
+*/
+int count_on_bits(int number)
+{
+    int on_bits = 0;
+    while(number)
+    {
+        if((number & 1)) ++on_bits; // check if bit is on or off
+        number >>=1; // remove last bit you have checked it above
+    }
+    return on_bits;
+}
+/*
+    below function can get any bit on or off of any number in binary representation
+
+*/
+bool get_any_bit(int number, int indx)
+{
+    return ( ( number >> indx ) & 1);
+}
+/*
+    below you can set any bit of any number to one and number will be changed to another value for ex
+    26 = 1 1 0 1 0
+    I need to set the third bit from right to be 1 then the number will be 30 instead of 26
+
+*/
+int set_any_bit_to_1(int number, int indx)
+{
+    return (number | (1<<indx));
+}
+/*
+    below you can set any bit of any number to zero and number will be changed to another value for ex
+    26 = 1 1 0 1 0
+    I need to set the fourth bit from right to be 0 then the number will be 18 instead of 26
+
+*/
+int set_any_bit_to_0(int number, int indx)
+{
+    return (number & ~(1<<indx));
+}
+/*
+    below you can flip any bit of any number to zero if one and one if zero
+    and number will be changed to another value for ex
+    26 = 1 1 0 1 0
+    I need to flip the fourth bit from right
+
+*/
+int flip_any_bit_to_opposite(int number, int indx)
+{
+    return (number ^ (1<<indx));
+}
+
+int main()
+{
+    // count bits of number
+    printf("Please Enter your number to count its on bits\n");
+    scanf("%d", &number);
+    printf("%d\n", count_on_bits(number));
+
+    // get specific bit on or off
+    printf("Please Enter your two number to get specific bit on or off\n");
+    scanf("%d %d", &number, &indx);
+    if(get_any_bit(number,indx)) printf("This is bit is on ^__^\n");
+    else printf("sorry this is bit is off ):\n");
+
+    // set specific bit to 1 if its off
+    printf("Please Enter your two number to set specific bit to be on\n");
+    scanf("%d %d", &number, &indx);
+    printf("%d\n", set_any_bit_to_1(number,indx));
+
+    // set specific bit to 0 if its on
+    printf("Please Enter your two number to set specific bit to be off\n");
+    scanf("%d %d", &number, &indx);
+    printf("%d\n", set_any_bit_to_0(number,indx));
+
+     // flip specific bit
+    printf("Please Enter your two number to flip specific bit\n");
+    scanf("%d %d", &number, &indx);
+    printf("%d\n", flip_any_bit_to_opposite(number,indx));
+
+    return 0;
+}

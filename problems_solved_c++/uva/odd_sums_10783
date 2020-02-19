@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const ll N=1e3+5, mod=1e9+7;
+ll n, m, nn[N], mm[N], grid[N][N];
+ll t,tet;
+void cum_sum(ll x){
+	mm[1] = 1;
+	for(int i=3;i<x;i +=2){
+		mm[i] +=mm[i-2] +i;
+	}
+}
+int main()
+{
+	cum_sum(1000);
+    scanf("%lld", &t);
+	while (t--)
+	{
+		scanf("%lld %lld", &n, &m);
+		m = (m & 1 ? mm[m]: mm[m-1]);
+		n = (n&1? mm[n-2] : mm[n-1]);
+		printf("Case %lld: %lld\n", ++tet, m-n);
+	}
+	
+    return 0;
+}

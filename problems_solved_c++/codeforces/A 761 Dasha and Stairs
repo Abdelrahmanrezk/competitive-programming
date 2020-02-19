@@ -1,0 +1,13 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int a,b;
+    scanf("%d %d",&a,&b);
+    int ab = abs(a-b);
+
+    if( (a == 0 && b == 0) || ab > 1) cout << "NO";
+    else cout << "YES";
+    return 0;
+}

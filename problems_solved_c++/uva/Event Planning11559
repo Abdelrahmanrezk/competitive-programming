@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+   int par,bud,hot,wee,perpric,a,mins=0;
+    bool f =0;
+int main()
+{
+
+
+    while(scanf("%d %d %d %d",&par,&bud,&hot,&wee) == 4)
+    {
+        mins =bud+1;
+        while(hot--)
+        {
+            scanf("%d",&perpric);
+            for(int i=0;i<wee;++i)
+            {
+                scanf("%d",&a);
+                if(a >= par) mins = min(mins,(par*perpric));
+            }
+        }
+
+
+    if(mins == bud+1) puts("stay home");
+    else printf("%d\n",mins);
+    }
+    return 0;
+}

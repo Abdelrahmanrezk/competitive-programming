@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int n,m,l,r,arr[109] = {0},arr2[109] = {0},c=0;
+    scanf("%d %d",&n,&m);
+    for(int i=0;i<n;++i)
+    {
+        scanf("%d %d",&l,&r);
+
+        for(int g=l; g <=r;++g)
+        {
+             arr[g] = g;
+            arr[g] = g;
+        }
+    }
+    for(int i=1;i<=m;++i)
+    {
+        if(arr[i] == 0)
+        {
+            arr2[c++] = i;
+        }
+    }
+    if(c)
+    {
+
+    printf("%d\n",c);
+    for(int i=0;i<c;++i)
+    {
+        printf("%d ",arr2[i]);
+    }
+    }else printf("0");
+    return 0;
+}

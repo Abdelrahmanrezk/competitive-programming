@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+
+    double H , U , D , F;
+    while(scanf("%lf %lf %lf %lf",&H,&U,&D,&F), H !=0.0)
+    {
+        int days=0,c=0;
+        double sum = 0.0,x=0.0;
+          x = U*F/100;
+            x = U * (F/100);
+        while(1)
+        {
+             ++days;
+            if(U > 0) sum += U;
+            U -= x;
+            if(sum > H) break;
+            sum -= D;
+            if(sum < 0) break;
+
+        }
+
+        if(sum >= 0 ) printf("success on day %d\n",days);
+        else printf("failure on day %d\n",days);
+    }
+    return 0;
+}

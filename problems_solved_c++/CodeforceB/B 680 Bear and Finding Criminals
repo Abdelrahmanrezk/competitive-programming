@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int n,d,x,c=0;
+
+    vector<int> vect(209);
+    fill(vect.begin() + 2, vect.end() - 1, 2);
+    scanf("%d %d",&n,&d);
+
+    for(int i=1;i<=n;++i){
+    scanf("%d",&x);
+        vect[i] = x;
+    }
+    vect[0] = 2;
+
+    if(vect[d] == 1) ++c;
+
+    for(int i=1;i<=n;++i)
+    {
+
+       if(d-i < 0)
+        {
+            if(vect[d+i] == 1) ++c;
+        }else{
+             if((vect[d-i] == 1 && vect[d+i] == 1))  c += 2;
+        else if (vect[d-i] == 1 && vect[d+i] == 2)  ++c;
+         else if (vect[d+i] == 1 && vect[d-i] == 2)  ++c;
+
+        }
+
+    }
+
+    cout << c;
+    return 0;
+}

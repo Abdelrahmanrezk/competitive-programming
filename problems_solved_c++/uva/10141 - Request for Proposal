@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int n,p,iarr[1000],maxs=0,ind=0,c=0;
+    double darr[1000];
+    string s,r[1000];
+
+    while(scanf("%d %d",&n,&p), (n||p))
+    {
+        ind = 0;
+        maxs=0;
+        getline(cin,s);
+
+       for(int i=0;i<n;++i)  getline(cin,s);
+        for(int i=0;i<p;++i)
+        {
+            getline(cin,r[i]);
+            scanf("%lf %d",&darr[i],&iarr[i]);
+            getline(cin,s);
+            for(int g=0;g<iarr[i];++g) getline(cin,s);
+
+        }
+        maxs = iarr[0];
+        for(int i=1;i<p;++i)
+        {
+            if(iarr[i] > maxs) maxs = iarr[i],ind=i;
+            else if(iarr[i] == maxs)
+            {
+
+                if(darr[i] < darr[ind]) ind = i;
+
+            }
+        }
+        if(c) puts("");
+        printf("RFP #%d\n",++c);
+        cout << r[ind] << endl;
+
+
+    }
+    return 0;
+}

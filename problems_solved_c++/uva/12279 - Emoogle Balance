@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int n,ind,c1=0,c2=0,c=0;
+
+    while(scanf("%d",&n), (n))
+    {
+        c1=0,c2=0;
+        while(n--)
+        {
+             scanf("%d",&ind);
+             if(ind == 0) ++c1;
+             else ++c2;
+        }
+        printf("Case %d: %d\n",++c,(c2 - c1));
+    }
+    return 0;
+}

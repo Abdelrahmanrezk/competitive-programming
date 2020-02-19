@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+#define ll long long
+
+using namespace std;
+
+int main()
+{
+    ll n;
+    scanf("%lld", &n);
+    ll x = n;
+    string s = to_string(n);
+
+    for(int i=0;i<s.length();++i){
+
+        n = x % 10;
+        x = x / 10;
+
+         if(n < 5)
+        {
+            cout << "O-|";
+            int i = 0;
+            for(;i<n;++i) cout << "O";
+            cout << "-";
+            n = 4 - i;
+            i = 0;
+            for(;i<n;++i) cout << "O";
+
+        }else{
+            cout << "-O|";
+            n = n - 5;
+            int i=0;
+            for(;i<n;++i) cout << "O";
+            cout << "-";
+            n = 4 - i;
+             i = 0;
+            for(;i<n;++i) cout << "O";
+        }
+
+        cout << "\n";
+
+    }
+
+    return 0;
+}

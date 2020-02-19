@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+
+int main()
+{
+    int n,k,arr[10000],s,arr2[10000]={0},c=0,arr3[1000],u=0;
+    scanf("%d %d",&n,&k);
+    for(int i=0;i<n;++i)  scanf("%d",arr+i);
+  for(int i=0;i<n;++i)
+  {
+            if(arr2[arr[i]] != arr[i])
+            {
+                arr2[arr[i]] = arr[i];
+
+                    arr3[u++] = i;
+                    ++c;
+                    if(c == k) break;
+
+
+            }
+  }
+    if(c >= k)
+    {
+         cout << "YES\n";
+         for(int i=0;i<c;++i)  cout << (arr3[i]+1) << " ";
+    }else cout << "NO\n";
+
+    return 0;
+}

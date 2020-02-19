@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+#define ll long long
+
+using namespace std;
+
+int main()
+{
+    int n,m,d,arr[100009];
+    ll sum1=0,sum2=0;
+    scanf("%d", &n);
+    for(int i=1;i<=n;++i)
+    {
+        scanf("%d",&d);
+        arr[d] = i;
+    }
+
+    scanf("%d",&m);
+    for(int i=1;i<=m;++i)
+    {
+        scanf("%d",&d);
+        sum1 += arr[d];
+        sum2 += n - arr[d] + 1;
+
+    }
+    printf("%lld %lld\n", sum1, sum2);
+    return 0;
+}

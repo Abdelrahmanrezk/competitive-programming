@@ -1,0 +1,93 @@
+ #include <bits/stdc++.h>
+
+    using namespace std;
+    int a,b;
+    char cPrColor,cPrColor2,deskColor[108][108];
+    int main()
+    {
+        scanf("%d %d", &a, &b);
+       cin >> cPrColor;
+        string s = "";
+        for(int i=0;i<a;++i)
+        {
+            for(int g=0;g<b;++g)
+            {
+                 cin >> cPrColor2;
+              deskColor[i][g] = cPrColor2;
+            }
+
+        }
+        for(int i=0;i<a;++i)
+        {
+              for(int g=0;g<b;++g)
+            {
+
+                if(deskColor[i][g] == cPrColor)
+                {
+                    if(deskColor[i][g+1] != cPrColor && g+1 < b && deskColor[i][g+1] != '.'){
+                    if(s.find(deskColor[i][g+1]) != string::npos);
+                    else   s += deskColor[i][g+1];
+                    }
+                     if(deskColor[i+1][g] != cPrColor && i+1 < a  && deskColor[i+1][g] != '.'){
+                        if(s.find(deskColor[i+1][g]) != string::npos);
+                        else  s += deskColor[i+1][g];
+                     }
+
+
+                     if(deskColor[i][g-1] != cPrColor && g-1 >= 0  && deskColor[i][g-1] != '.'){
+                        if(s.find(deskColor[i][g-1]) != string::npos);
+                        else   s += deskColor[i][g-1];
+                     }
+                    if(deskColor[i-1][g] != cPrColor && i-1 >= 0  && deskColor[i-1][g]  != '.'){
+                          if(s.find(deskColor[i-1][g]) != string::npos);
+                        else   s += deskColor[i-1][g];
+                    }
+
+                }
+            }
+
+        }
+        cout << s.length();
+
+
+
+
+
+
+// another solution using set
+/*
+
+#include <bits/stdc++.h>
+using namespace std;
+set<char>st;
+int a,b;
+char cPrColor,s[106][106];
+int main()
+{
+    scanf("%d %d", &a, &b);
+       cin >> cPrColor;
+        for(int i=0;i<a;++i) scanf("%s", s[i]);
+
+          for(int i = 0; i < a; ++i)
+          {
+            for(int j = 0; j < b; ++j)
+            {
+              if(s[i][j] == cPrColor)
+              {
+                    if(i+1 < a  && s[i+1][j]  != '.' && s[i+1][j] != cPrColor)    st.insert(s[i+1][j]);//down
+                    if(i-1 >= 0 && s[i-1][j]  != '.' && s[i-1][j] != cPrColor)    st.insert(s[i-1][j]);//up
+                    if(j+1 < b  && s[i][j+1]  != '.' && s[i][j+1] != cPrColor)    st.insert(s[i][j+1]);//right
+                    if(j-1 >= 0 && s[i][j-1]  != '.' && s[i][j-1] != cPrColor)    st.insert(s[i][j-1]);//left
+                }
+            }
+        }
+        cout << st.size();
+    return 0;
+}
+
+
+*/
+
+
+        return 0;
+    }

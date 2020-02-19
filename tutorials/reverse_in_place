@@ -1,0 +1,75 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+/*
+    program is to reverse an array in place which without redeclare another any data type it uses the same data
+    f ==> as expression of function
+    a ==> as an array
+    i ==> integer
+    each letter is meet a data type
+    c++ function
+    assert
+    random
+    reverse
+    swap
+
+*/
+const int len=101;
+int a_arr[len]; // used by me to reverse in place
+int a_arr_same[len]; // used by reverse c++ language
+
+// func 1 used to fill array with random values from 0 to 999
+int f_fill_array(int len)
+{
+    for(int i=0;i<len;++i)
+    {
+         /*
+            here is I fill two array because
+            first one is used by my function and second will used by c++ reverse function
+        */
+        a_arr_same[i] = a_arr[i] = random() % 1000;
+    }
+}
+
+// func 2 used to reverse the element of an array
+
+int f_reverse_in_place(int a_arr[], int len)
+{
+    for(int i=0;i<len /2; ++i)
+    {
+        /*
+            for ex 1 2 3 4 5 6 7
+            so loop will be repeat till 7 / 2 which is 3 because of len is 7 devide by 2 is 3 because integer devide by integer
+            then for first test i will be 0 so len which is 7 - 0 - 1 will be 6 which is last index of the array then
+            i = 1 so 7 - 1 - 1 will be 5 which is the six elment in the array will replaced with the second element
+            this is will repeat till you arrive to the center of the array then loop will stop
+        */
+        swap(a_arr[i], a_arr[len-i-1]); // swap is built in c++ function to swap two values
+    }
+}
+
+void f_test_reverse_in_place_with_builtin_reverse_function()
+{
+    int i_test_odd_even_length = len;
+    for(int g=0;g<2;++g)
+    {
+        for(int i=0;i<1000; ++i)
+        {
+
+            f_fill_array(len); // call fill array function
+            f_reverse_in_place(a_arr, len); // call my reverse in place function
+            reverse(a_arr_same, a_arr_same + len); // call c++ reverse function
+
+            for(int i=0;i<len;++i) assert(a_arr[i] == a_arr_same[i]); // assert will terminate the program if there is false
+        }
+        --i_test_odd_even_length;
+    }
+
+    cout << "YES\n";
+}
+
+int main()
+{
+    f_test_reverse_in_place_with_builtin_reverse_function();
+    return 0;
+}

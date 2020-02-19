@@ -1,0 +1,67 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+        string s[1000],s2[1000],r;
+        bool f=1;
+        int i=0,c=0;
+        while(cin >> r )
+        {
+            if(r != "XXXXXX")
+            {
+
+                s[i++] = r;
+                sort(r.begin(),r.end());
+                s2[c++] = r;
+
+            }else break;
+
+        }
+
+        while(cin >> r)
+        {
+           string  s3[1000];
+           int k = 0;
+
+            if(r == "XXXXXX")break;
+            f =1;
+
+            sort(r.begin(),r.end());
+
+            for(int g=0;g<i;++g)
+            {
+
+                if(r == s2[g])
+                {
+                    s3[k++] = s[g];
+
+                    f=0;
+                }
+            }
+
+
+            if(f)  cout << "NOT A VALID WORD\n";
+            else {
+
+            sort(s3,s3+k); //Use the start and end like this
+
+            for(int y = 0; y < k; y++){
+                cout << s3[y] << endl;
+            }
+
+            }
+
+            cout << "******\n";
+
+
+        }
+
+    return 0;
+}
+
+
+
+
+

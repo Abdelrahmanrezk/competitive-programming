@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int t,n,p,k,arr[10000],c=0;
+    scanf("%d",&t);
+    while(t--)
+    {
+        c=0;
+        scanf("%d",&n);
+        scanf("%d",&p);
+        for(int i=0;i<p;++i)
+        {
+            scanf("%d",&k);
+            for(int g=k;g<=n;g=g+k) arr[c++] = g;
+        }
+
+
+        list<int> la(arr,arr+c);
+        la.sort();
+        la.unique();
+         int y = la.size();
+
+      for(auto x = la.begin() ; x!=la.end() ; ++x){
+
+         if(*x  % 7 == 0 || *x % 7 == 6) --y;
+      }
+
+
+        cout << y << endl;
+
+    }
+    return 0;
+}

@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t,n,di,sumM=0,sumJ=0,c=0;
+
+    scanf("%d",&t);
+    while(t--)
+    {
+        sumM=0,sumJ=0;
+        scanf("%d",&n);
+        while(n--)
+        {
+            scanf("%d",&di);
+             sumJ += 15,sumJ += (di/60) * 15;
+
+             sumM += 10,sumM += (di/30) * 10;
+        }
+        if(sumM < sumJ) cout << "Case " << ++c << ": " << "Mile " << sumM << endl;
+        else if(sumJ < sumM) cout << "Case " << ++c << ": " << "Juice " << sumJ << endl;
+        else cout << "Case " << ++c << ": " << "Mile Juice " << sumJ << endl;
+    }
+    return 0;
+}

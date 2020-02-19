@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+
+        int t,m,n,sum1=0,sum2=0;
+        scanf("%d",&t);
+        while(t--)
+        {
+            sum1=0,sum2=0;
+            scanf("%d %d",&m,&n);
+
+
+            m -=2,n -=2;
+
+            if(m % 3 != 0) sum1 +=1, sum1 += m / 3;
+            else sum1 += m / 3;
+
+            if(n % 3 != 0) sum2 +=1, sum2 += n / 3;
+            else sum2 += n / 3;
+
+            printf("%d\n",(sum1 * sum2));
+
+
+
+        }
+
+    return 0;
+}

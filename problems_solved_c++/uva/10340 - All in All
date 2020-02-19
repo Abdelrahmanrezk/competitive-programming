@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+
+    string s,t;
+    int co=0,len1=0,len2=0;
+
+        while(cin >> s >> t)
+        {
+
+        int i,j;
+            len1 = s.length();
+            len2 = t.length();
+            for( i=0,j=0;(i<len1) && (j<len2);++j)
+            {
+                if(s[i] == t[j]) ++i;
+
+            }
+
+
+    if(i == s.length()) cout << "Yes\n";
+        else cout << "No\n";
+        }
+
+
+
+    return 0;
+}

@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int n,x,y,z,c=0;
+    scanf("%d",&n);
+    while(n--)
+    {
+        scanf("%d %d %d",&x,&y,&z);
+        if(x >20 || y > 20 || z > 20) printf("Case %d: bad\n",++c);
+        else printf("Case %d: good\n",++c);
+    }
+    return 0;
+}

@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+
+    int n,f=2,counboy=0,counrob=0;
+    bool ch=1;
+    string s,s1,s2;
+    while(scanf("%d",&n), n != -1)
+    {
+        counboy=0,counrob=0;
+        f=2;
+        ch=1;
+       getline(cin,s);
+       getline(cin,s1);
+       getline(cin,s2);
+       for(int i=0;i<s2.length();++i)
+       {
+            for(int g=0;g<s1.length();++g)
+            {
+                if(s2[i] == s1[g])
+                {
+                    ++counboy;
+                    ch=0;
+                    s1[g] = '8';
+                }
+            }
+
+            if(ch)
+            {
+                ++counrob;
+            }
+            if(s1.length() == counboy)
+            {
+                f = 1;
+                break;
+            }
+            if(counrob >= 7)
+            {
+                f = 0;
+                break;
+            }
+
+         ch=1;
+       }
+       printf("Round %d\n",n);
+
+       if(f == 0) printf("You lose.\n");
+       else if(f==1) printf("You win.\n");
+       else printf("You chickened out.\n");
+
+    }
+
+
+    return 0;
+}

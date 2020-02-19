@@ -1,0 +1,16 @@
+#include <iostream>
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+int main()
+{
+    ll n, m;
+    ll result=0;
+
+    cin >> n >> m;
+    for(int i = 1;i<=n;++i) result +=(m+i%5)/5;
+
+    cout << result;
+    return 0;
+}

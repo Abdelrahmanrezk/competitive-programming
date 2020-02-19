@@ -1,0 +1,78 @@
+#include <bits/stdc++.h>
+
+/*
+    program is to find maximum consecutive three integer or as you need just change value of k
+    order of the process is O(n*k)
+    f ==> function
+    i ==> integer
+    a ==> array
+*/
+
+using namespace std;
+/*
+    you can change k and len above to expand your array and k for expand your window or with smaller values as you need
+*/
+const int len = 9;
+int a_arr[len],k = 3;
+/* func 1 is to fill array*/
+void f_fill_array(int len)
+{
+    for(int i=0;i<len;++i)
+    {
+        /*
+            fill the array with your values
+        */
+        scanf("%d", a_arr + i);
+
+    }
+}
+/* func 2 is to get max consecutive three integer from the array*/
+int f_get_max_window(int a_arr[], int len, int k) /* send array as parameter, len to loop over and k is window*/
+{
+    int i_total_max_window = 0;
+
+    /*
+        len - k + 1 because let us length is 8 element and element is 1 2 3 4 5 6 7 8
+        then let k = 3
+        so first window will be 1 2 3
+        and last window is len which 8 - k which is 3 + 1 will be 6 and the loop stop
+        if i < 6 which is in this case will be 5 and a_arr[5] is 6 and the window is 6 7 8 so you will stop on len - k + 1
+    */
+    for(int i=0;i < len-k+1;++i)
+    {
+        int i_total_sum_window = 0; /* start total for new window so you need to reset last window you get*/
+        for(int window = 0; window < k; ++window) /* take each window as size of k*/
+        {
+            /*
+                i + window because you need to stand for each new window for ex
+                1 2 3 4 5 6 7 8
+                1 2 3 is first window when i =0 and window will start from 0
+                then next window will be 2 3 4 because i will be 1 then window will be 0 so you you will get second window
+                draft it step by step you will understand what i mean
+            */
+            i_total_sum_window += a_arr[i+window];
+        }
+
+        if(i_total_max_window  < i_total_sum_window)
+        {
+            /*
+             if you get new window greater than max_window
+            you need to change the max window by the new max window
+            */
+            i_total_max_window = i_total_sum_window;
+        }
+
+    }
+   return i_total_max_window;
+}
+
+
+
+int main()
+{
+    f_fill_array(len);
+    cout <<  f_get_max_window(a_arr,len,k);
+
+
+    return 0;
+}

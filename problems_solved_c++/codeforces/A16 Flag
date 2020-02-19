@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int n,m;
+    scanf("%d %d",&n, &m);
+    char c[200][200];
+    for(int i=0;i<n;++i) cin >> c[i];
+    bool flag = 0;
+    string s = "";
+
+    for(int i=0;i<n;++i)
+    {
+        if(s == c[i] ) {
+            flag = 1;
+            break;
+        }
+        char che = c[i][0];
+
+        for(int g=1;g<strlen(c[i]);++g)
+        {
+            if(che != c[i][g]){
+            flag = 1;
+            break;
+        }
+        }
+        if(flag) break;
+
+        s = c[i];
+
+    }
+    if(flag) cout << "NO\n";
+    else cout << "YES\n";
+
+    return 0;
+}

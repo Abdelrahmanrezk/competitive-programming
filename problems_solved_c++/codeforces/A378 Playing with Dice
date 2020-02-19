@@ -1,0 +1,25 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main()
+{
+
+    int a,b;
+    int subsa = 0,subsb=0,co=0,eq=0,cob=0;
+    scanf("%d %d",&a,&b);
+
+    for(int i=1;i<=6;++i){
+        subsa = abs(a - i);
+        subsb = abs(b-i);
+        if(subsa < subsb) ++co;
+        else if (subsa == subsb) ++eq;
+        else if(subsa > subsb) ++cob;
+    }
+
+    printf("%d %d %d", co,eq,cob);
+
+
+    return 0;
+}

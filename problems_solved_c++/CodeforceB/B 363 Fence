@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+int n,k,planksHeight[1000009],c=1,pos;
+ll fConsecutiveSum =0,anyConsecutiveSum2 = 0;
+void loopOver(int n)
+{
+    for(int i=0;i<n;++i)
+    {
+        scanf("%d", planksHeight+i);
+    }
+}
+int getSum(int k)
+{
+    for(int i=0;i<k;++i) fConsecutiveSum += planksHeight[i];
+}
+// get the first postion of the sum Consecutive
+int getPos(int n, int k)
+{
+    for(int i=k; i < n; ++i)
+    {
+        anyConsecutiveSum2 += planksHeight[i];
+        if(anyConsecutiveSum2 < fConsecutiveSum) pos = i + 2, pos -=k;
+
+         fConsecutiveSum = min(fConsecutiveSum,anyConsecutiveSum2);
+            anyConsecutiveSum2 -= planksHeight[c++];
+    }
+    return pos;
+}
+
+int main()
+{
+    scanf("%d %d", &n, &k);
+    loopOver(n);
+    getSum(k);
+    anyConsecutiveSum2 = fConsecutiveSum- planksHeight[0];
+    getPos(n,k);
+    if(pos) cout << pos;
+    else cout   << ++pos;
+
+    return 0;
+}

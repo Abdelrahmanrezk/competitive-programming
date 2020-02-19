@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    string s;
+    int n;
+    scanf("%d",&n);
+    getline(cin,s);
+    while(n--)
+    {
+        cin >> s;
+        sort(s.begin(),s.end());
+        do
+        {
+            cout << s << endl;
+        } while(next_permutation(s.begin(),s.end()));
+
+        puts("");
+
+    }
+
+    return 0;
+}

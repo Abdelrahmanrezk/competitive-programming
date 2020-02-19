@@ -1,0 +1,76 @@
+/*_________________ by functions--------------*
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+// return with second smallest element in the array
+
+int SecondMinimum(int arr[], int n){
+    int res = 0;
+    if(n > 1)
+    {
+      for(int i=1;i<n;++i)
+    {
+        if(arr[i] != arr[i-1]){
+        res = arr[i];
+        break;
+    }else  res = 105;
+    }
+    }else res = 105;
+
+return res;
+
+}
+
+
+int n;
+int arr[105];
+int x = 0;
+int main()
+{
+        scanf("%d", &n);
+        for(int i=0;i<n;++i) scanf("%d",&arr[i]);
+        sort(arr,arr+n);
+
+     x = SecondMinimum(arr,n);
+    if(x == 105){
+        printf("NO");
+    }else{
+        printf("%d",x);
+    }
+
+
+    return 0;
+}
+*/
+/*Wiuth out function */
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int n;
+int arr[105];
+int main()
+{
+        scanf("%d", &n);
+        for(int i=0;i<n;++i) scanf("%d",&arr[i]);
+
+        sort(arr,arr+n);
+
+        int x = 0;
+for(int i=1;i<n;++i){
+    if(arr[i] != arr[i-1]){
+        x = i;
+        break;
+    }
+}
+if(x  != 0){
+printf("%d",arr[x]);
+
+}else{
+    printf("NO");
+}
+
+
+    return 0;
+}

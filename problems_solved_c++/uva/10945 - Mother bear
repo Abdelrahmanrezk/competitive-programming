@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    string s,e;
+    string r="",d="";
+    while(getline(cin,s) && s != "DONE")
+    {
+
+        r="";
+        bool f = 0;
+         transform(s.begin(), s.end(), s.begin(), ::tolower);
+        for(int i=0;i<s.length();++i)
+        {
+            if(s[i] >= 'A' && s[i] <= 'z') r += s[i];
+
+
+        }
+        d = r;
+    reverse(r.begin(),r.end());
+
+        if(r == d) puts("You won't be eaten!");
+        else puts("Uh oh..");
+    }
+    return 0;
+}
+

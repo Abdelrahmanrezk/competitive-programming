@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int step,mod,index=0;
+    while(cin >> step >> mod)
+    {
+        bool visted[mod] = {0};
+        bool bad = 0;
+        for(int i=0;i<mod;++i)
+        {
+            int genr = (index + step) % mod;
+            if(visted[genr] == 1)
+            {
+                bad =1;
+                break;
+            }
+
+            visted[genr] = 1;
+            index  = genr;
+        }
+        cout << setw(10) <<  step << setw(10) << mod << "    ";
+        bad ? cout << "Bad Choice\n\n" : cout << "Good Choice\n\n";
+    }
+    return 0;
+}

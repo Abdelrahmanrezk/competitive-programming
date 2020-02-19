@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int k;
+    scanf("%d",&k);
+    char c[14];
+    string s="";
+    int one = 0,two=0;
+    while(k--)
+    {
+        scanf("%s",c);
+        s = c;
+        if(s.length() == 5) puts("3");
+        else
+        {
+            one = 0;
+          if (s[0] == 'o') ++one;
+            if (s[1] == 'n') ++one;
+            if (s[2] == 'e') ++one;
+            if (one >= 2) cout << "1\n";
+            else cout << "2\n";
+
+        }
+    }
+
+    return 0;
+}

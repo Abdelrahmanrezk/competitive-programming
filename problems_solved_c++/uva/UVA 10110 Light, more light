@@ -1,0 +1,26 @@
+#include <iostream>
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+ll arr[] = {0};
+int main()
+{
+
+unsigned int n;
+unsigned int sq = 0;
+
+while(cin >> n && (n !=0 ) ){
+
+        sq = (int) sqrt(n);
+        cout << (sq * sq == n ? "yes\n" : "no\n");
+
+    }
+
+
+
+
+
+
+
+    return 0;
+}

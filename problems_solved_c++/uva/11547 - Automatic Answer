@@ -1,0 +1,19 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+int main()
+{
+   int t,n;
+   ll sum = 0;
+   scanf("%d",&t);
+   while(t--)
+   {
+        scanf("%d",&n);
+        sum = (((((((567 * n) / 9) + 7492) * 235) / 47 ) - 498 ));
+        sum = sum / 10;
+        sum = abs(sum);
+        printf("%lld\n",(sum % 10));
+   }
+    return 0;
+}

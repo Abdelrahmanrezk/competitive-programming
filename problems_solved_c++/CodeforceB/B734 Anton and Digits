@@ -1,0 +1,65 @@
+#include <iostream>
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+// by function and small code
+int sum(int a,int b,int c,int d){
+
+        int mins = 0;
+        int sums = 0;
+        mins = min(a,min(c,d));
+
+        sums = mins * 256;
+        a = a - mins;
+        if(a > 0){
+            mins = min(a,b);
+
+            sums += mins * 32;
+        }
+
+return sums;
+
+}
+
+int main()
+{
+
+    int k2,k3,k5,k6;
+    scanf("%d %d %d %d", &k2,&k3,&k5,&k6);
+
+    cout << sum(k2,k3,k5,k6);
+
+/*
+        without function and clear code by each case
+        if(k2 == 0) cout << sum;
+        else if( (k3 == 0 && k5 == 0) || (k3 == 0 && k6 == 0 ) ) cout << sum;
+        else if(k5 == 0 || k6 == 0)
+        {
+            if(k2 > k3) swap(k2,k3);
+            for(int i=0;i<k2;++i) sum += 32;
+
+            cout << sum;
+
+        }else if(k3 == 0){
+
+            mins = min(k2,min(k5,k6));
+            for(int i=0;i<mins;++i) sum += 256;
+
+            cout << sum;
+
+        }else{
+
+         mins = min(k2,min(k5,k6));
+         for(int i=0;i<mins;++i){
+            sum += 256;
+            --k2;
+         }
+         mins = min(k2,k3);
+         for(int i=0;i<mins;++i) sum += 32;
+
+            cout << sum;
+        }
+
+*/
+    return 0;
+}

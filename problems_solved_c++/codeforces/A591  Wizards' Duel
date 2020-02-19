@@ -1,0 +1,11 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int i,p,q;
+    scanf("%d %d %d",&i,&p,&q);
+    printf("%f",(double(i*p) / (p+q)));
+    return 0;
+}

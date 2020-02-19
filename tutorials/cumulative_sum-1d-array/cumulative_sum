@@ -1,0 +1,176 @@
+/*
+    Abdelrahman Rezk 9-2-2019
+    cumulative sum first part on 1D array next part will be on 2D array
+    full stack developer with Django framework of Python, html,css,js,jquery,ajax, json,
+    bootstrap, wordpress designer not developer rame work and improve my skills in problem solving by c++
+    Vector is like array with some of features you can visit link below to get an information of vector
+    https://www.geeksforgeeks.org/vector-in-cpp-stl/
+
+*/
+#include <bits/stdc++.h>
+
+using namespace std;
+
+/*
+program instrucure
+    first part is zero based and show the different with one based
+    a program is to cumulative sum element of the vector data sturcure
+     cumulative sum is about each index of the vector has a sum of all previous indeses_values for example
+     this help you to make multiple of query range in just O(1) instead of loop over vector in each time you need to range which is O(n)
+     you input
+     1 2 3 4 5
+     your output will be
+     1 3 6 10 15
+     first you input n then enter
+     second enter n integrs like above examples assume n I entered is 5
+     third fill the vector with integers you entered
+     forth sum the element of each index with the prevoius element
+     fifth print the new cumulative sum vector
+
+ info
+    first letter is expression which data type or data structure is used as about f is about function and so on
+    vector is STL data sturcure which is (Standard Template Library)
+    read about vector and its method from here      https://www.geeksforgeeks.org/vector-in-cpp-stl/
+    using void function, loops, integers, scanf,printf, puts c function insted of cout, cin of c++
+
+
+*/
+int n, start_range, end_range; // using n as input from user and using as a parameter to loop over till it
+vector<int> v_one_based_cumulative_sum;
+
+vector<int> v_zero_based_cumulative_sum;
+
+/*  func 1 zero based
+
+    function below is responsibe for scanning data from user and fill the vector we create above with element from the user
+    first scan an integer in variable a
+    second push it to the vector till you finished
+*/
+
+void f_zero_based_fill_cumulative_vector(int n)
+{
+    int i_userInput;
+    for(int i=0; i<n; ++i) // here is I stoped on i<=n because I started from 1 as I push 0 above in the vector
+    {
+        scanf("%d", &i_userInput); // here is I scan an integer from user to push it in vector
+        v_zero_based_cumulative_sum.push_back(i_userInput);
+    }
+}
+/*
+func 2 zero based
+    here is I used a if condition to check for first index which 0 and asign it its value without any of prevoius value because its first elment
+    for example  i-1 = 0 -1 = -1 and no index is called -1 and will give you out of range so I handl it by if conditio
+*/
+void f_zero_based_cumulative_sum_element(int n)
+{
+    for(int i=0;i<n;++i)
+    {
+        if(i==0) v_zero_based_cumulative_sum[i] = v_zero_based_cumulative_sum[i];
+        else v_zero_based_cumulative_sum[i] += v_zero_based_cumulative_sum[i-1];
+    }
+}
+
+
+/*  func 1 one based
+
+    function below is responsibe for scanning data from user and fill the vector we create above with element from the user
+    I started the loop from 1 because I have pushed 0 above as I said to handle condition of 0 based
+    first scan an integer in variable a
+    second push it to the vector till you finished
+*/
+
+
+void f_one_based_fill_cumulative_vector(int n)
+{
+    int i_userInput;
+    for(int i=1; i<=n; ++i) // here is I stoped on i<=n because I started from 1 as I push 0 above in the vector
+    {
+        scanf("%d", &i_userInput); // here is I scan an integer from user to push it in vector
+        v_one_based_cumulative_sum.push_back(i_userInput);
+    }
+}
+
+
+/*
+func 2 one based
+    below I have made it as one based and first index in the main function set to 0 and this step handleing the condition above
+    so no need to check because you started from index 1 index 0 has value of 0 which has no effect as we sum
+
+*/
+void f_one_based_cumulative_sum_element(int n)
+{
+    for(int i=1;i<=n;++i)
+    {
+        v_one_based_cumulative_sum[i] += v_one_based_cumulative_sum[i-1];
+    }
+}
+
+
+/*
+    func 3 get range of one based
+
+*/
+
+int f_get_range_one_based(int start_range, int end_range)
+{
+    if(end_range < start_range) swap(start_range, end_range); // swap is built in c++ method
+
+    if(start_range == 0) return v_one_based_cumulative_sum[end_range];
+    else return v_one_based_cumulative_sum[end_range] - v_one_based_cumulative_sum[--start_range];
+}
+
+/*
+    func 3 get range of zero based
+
+*/
+
+int f_get_range_zero_based(int start_range, int end_range)
+{
+    if(end_range < start_range) swap(start_range, end_range); // swap is built in c++ method
+
+    if(start_range == 0) return v_zero_based_cumulative_sum[end_range];
+    else return v_zero_based_cumulative_sum[end_range] - v_zero_based_cumulative_sum[--start_range];
+}
+
+int main()
+{
+// zero based
+    puts("Enter a value of n integer for zero based cumulative");
+    scanf("%d", &n); // first get int
+
+    puts("Enter n integers values");
+    // call zero based function to fill the vector, function is created above and is called func 1 zero based
+    f_zero_based_fill_cumulative_vector(n);
+
+    // call zero based function to sum element in the vector, function is created above and is called func 2 zero based
+    f_zero_based_cumulative_sum_element(n);
+
+    puts("Zero based cumulative sum values output");
+    for(int i=0;i<n;++i) printf("%d\n", v_zero_based_cumulative_sum[i]);
+
+// one based
+    puts("Enter a value of n integer for one based cumulative");
+    scanf("%d", &n); // first get int
+
+    v_one_based_cumulative_sum.push_back(0); // I make it 1 based instead of 0 based to ignore a condition of index 0 when i need i-1
+    puts("Enter n integers values");
+    // call one based function to fill the vector, function is created above and is called func 1 one based
+    f_one_based_fill_cumulative_vector(n);
+
+    // call one based function to sum element in the vector, function is created above and is called func 2 one based
+    f_one_based_cumulative_sum_element(n);
+
+    puts("One based cumulative sum values output");
+    for(int i=1;i<=n;++i) printf("%d\n", v_one_based_cumulative_sum[i]);
+
+    puts("Get One based query range. Enter start and end range positive integer less than or equal to n");
+    scanf("%d %d", &start_range, &end_range);
+    printf("%d\n", f_get_range_one_based(start_range, end_range));
+
+    puts("Get Zero based query range. Enter start and end range positive integer less than n");
+    scanf("%d %d", &start_range, &end_range);
+    printf("%d\n", f_get_range_zero_based(start_range, end_range));
+
+
+    return 0;
+}

@@ -1,0 +1,28 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int t,n,x,ma=0,c=0,cou=0;
+    scanf("%d",&t);
+    while(t--)
+    {
+        ma=0,c=0;
+        scanf("%d",&n);
+        while(n--)
+        {
+            scanf("%d",&x);
+            if(c > 0)
+            {
+                if(x > ma) ma = x;
+            }else{
+                ma = x;
+            }
+
+            ++c;
+        }
+        printf("Case %d: %d\n",++cou,ma);
+    }
+    return 0;
+}

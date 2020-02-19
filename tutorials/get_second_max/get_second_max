@@ -1,0 +1,81 @@
+#include <bits/stdc++.h>
+
+/*
+    Program to get second maximum element in the array
+    first letter of each word is about type of data I used for more knowledge
+    f ==> Function
+    a ==> Array
+    i ==> integer
+    c++ function
+    random
+    assert
+    sort
+    swap
+ */
+
+using namespace std;
+
+const int len = 10;
+int a_arr[len];
+
+void f_fill_array(int len)
+{
+    for(int i=0;i<len;++i)
+    {
+        a_arr[i] = random() % 1000;
+    }
+}
+
+int f_get_second_max(int a_arr[], int len) // send array as a parameter to the function with length of the array
+{
+
+    int i_first_max = a_arr[0], i_second_max = a_arr[1]; // get the first and second element of the array
+    if(i_first_max < i_second_max) swap(i_first_max, i_second_max); // swap is built in c++ function to swap two variable values
+
+    for(int i=2;i<len;++i) // start from third element because I used the first and second element above
+    {
+        if(i_first_max < a_arr[i])
+        {
+            /*
+             in the general first max is greater than second max so i need to check for each element in the array, if its greater than the first max
+             then it will be greater than the second max so
+             first let the second max take the value of first max and first max get the value of arr[i]
+             try to draft it on paper for understanding
+
+             */
+            i_second_max = i_first_max;
+            i_first_max = a_arr[i];
+        }else if(i_second_max < a_arr[i])
+        {
+            /*
+                here is I need to check if arr[i] is not greater than first max so check with second max and
+                if it greater, let second max get the array[i] value
+            */
+            i_second_max = a_arr[i];
+        }else ; // do not make anything because arr[i] is less than first and second max
+    }
+    return i_second_max;
+}
+
+void f_test_cases()
+{
+
+    for(int i=0;i <1000;++i)
+    {
+        f_fill_array(len);
+        int i_func_second_max = f_get_second_max(a_arr, len); // get second max before you sort the array by our design function its return integer
+
+        sort(a_arr, a_arr + len); // sort the array by c++ built in function after sorting get second max by len -2
+        int i_sort_second_max = a_arr[len -2]; // I get second max after sorting to validate my bure code with c++ built in sorting function
+
+        assert(i_sort_second_max ==  i_func_second_max); // will continue the loop if true otherwise will terminate the program
+
+    }
+
+    cout << "YES\n"; // here is I print yes if its passed through the 1000 test case otherwise will crash the program because of assert c++ function
+}
+int main()
+{
+    f_test_cases(); // call test function
+    return 0;
+}

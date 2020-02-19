@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const ll N=1e3+5, mod=1e9+7;
+ll n, m, nn[N], mm[N], grid[N][N];
+ll t,tet;
+void cum_sum(ll x){
+	mm[1] = 1;
+	for(int i=3;i<x;i +=2){
+		mm[i] +=mm[i-2] +i;
+	}
+}
+int main()
+{
+	double n;
+	while (scanf("%lf", &n), n)
+	{
+			// if(n == 0){break;}
+		double res = 0;
+		for(int i=1;;i++) if(i*i*i>n) {
+			res = i-1;
+			break;
+		}
+		double dx  =( n - (res * res * res )) / (3.0*res*res);
+		printf("%.4lf\n", res + dx);
+	}
+	
+	
+    return 0;
+}

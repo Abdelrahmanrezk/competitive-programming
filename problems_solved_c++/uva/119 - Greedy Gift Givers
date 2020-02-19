@@ -1,0 +1,59 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+
+        int n;
+        int coun=0;
+
+        while(scanf("%d",&n) != EOF)
+        {
+        	if(coun) puts("");
+        	coun++;
+            int arrNamePaid[100]={0},personPaid=0,numOfGetMony=0,arrTakeMony[100]={0},handl=0;
+             string s[100],r;
+            for(int i=0;i<n;++i) cin >> s[i];
+
+            for(int i=0;i<n;++i)
+            {
+                cin >> r >> personPaid >> numOfGetMony;
+
+               if(numOfGetMony > 0)
+               {
+                handl = personPaid % numOfGetMony;
+                personPaid -= handl;
+                    for(int g=0;g<n;++g)
+                    {
+                        if(r == s[g])
+                        {
+
+                             arrNamePaid[g] = personPaid;
+
+                            break;
+                        }
+                    }
+
+                       for(int k=0;k<numOfGetMony;++k)
+                {
+                    cin >> r;
+                    for(int f=0;f<n;++f)
+                    {
+                        if(r == s[f])
+                        {
+                            arrTakeMony[f] += personPaid / numOfGetMony;
+                            break;
+                        }
+                    }
+                }
+               }
+
+            }
+        for(int i=0;i<n;++i) cout << s[i] << " " << (arrTakeMony[i] - arrNamePaid[i]) << endl;
+        }
+
+
+    return 0;
+}
+
